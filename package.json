@@ -1,0 +1,21 @@
+{
+  "name": "playwright-ts-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Top-Q/playwright-ts-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Top-Q/playwright-ts-example/issues"
+  },
+  "homepage": "https://github.com/Top-Q/playwright-ts-example#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.23.0"
+  }
+}
