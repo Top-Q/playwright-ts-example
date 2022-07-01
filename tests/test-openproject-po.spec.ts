@@ -1,44 +1,33 @@
 import { test, expect, type Page } from '@playwright/test';
-import {LoginPage} from '../infra/po/login';
+import {LoginPage, OpenProjectPage} from '../infra/po/pages';
+
+
 
 async function performLogin(page: Page) {
   const loginPage = new LoginPage(page);
-  await loginPage.navigate();
-  await loginPage.clickOnSignInToggle();
-  await loginPage.fillUsername("admin");
-  await loginPage.fillPassword("adminadmin");
-  await loginPage.clickOnSignInBtn();
-  // await page.goto('http://localhost:8080/');
-
-  // await page.locator("span:has-text('Sign in')").click()
-  // // Fill input[name="username"]
-  // await page.locator('input[name="username"]').fill('admin');
-
-  // // Fill input[name="password"]
-  // await page.locator('input[name="password"]').fill('adminadmin');
-
-  // // Click input:has-text("Sign in")
-  // await Promise.all([
-  //   page.locator('input:has-text("Sign in")').click(),
-  //   page.waitForNavigation(),
-  // ]);
+  await test.step('Performing login', async () => {
+    await (await (await (await (await loginPage
+      .navigate())
+      .clickOnSignInToggle())
+      .fillUsername("admin"))
+      .fillPassword("adminadmin"))
+      .clickOnSignInBtn();
+    await expect(page).toHaveURL('http://localhost:8080/');
   
-  
-  await expect(page).toHaveURL('http://localhost:8080/');
-
+  });
 }
 
 
 test.describe('Task', () => {
   test.beforeEach(async ({ page }) => {
     await performLogin(page);
-
-
   });
-  test('create task', async ({ page }) => {
-    await page.locator("#projects-menu i").click();
 
-    await page.locator("#ui-id-5 >> text=Selenium project").click();
+  test('create task', async ({ page }) => {
+    const openProjectPage = new OpenProjectPage(page);
+    await openProjectPage.clickOnSelectAProjectToggle();
+    await openProjectPage.clickOnProjectName("Selenium project");
+
     await page.locator("#main-menu-work-packages >> text=Work packages").click();
 
     await page.locator("text=Create Include projects >> [aria-label='Create new work package']").click();
