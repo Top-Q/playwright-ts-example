@@ -16,6 +16,8 @@
   },
   "homepage": "https://github.com/Top-Q/playwright-ts-example#readme",
   "devDependencies": {
-    "@playwright/test": "^1.23.0"
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.6"
   }
+   
 }
