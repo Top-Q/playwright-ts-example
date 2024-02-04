@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../infra/po/demo-app';
+import { LoginPage } from '../../infra/po/demo-app';
 
 test.describe('Test Demo Login Application', ()=>{
   
