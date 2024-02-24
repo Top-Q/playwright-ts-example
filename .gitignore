@@ -114,3 +114,4 @@ dist
 /playwright/.cache/
 /*-snapshots/
 *.png
+test-results.json

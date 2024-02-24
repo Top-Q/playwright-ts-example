@@ -5,6 +5,32 @@ test('test my first test', async () => {
   console.log("Hello world of tests");
 });
 
+test('test basic types', async () => {
+  // Boolean: Represents a logical value indicating true or false.
+  let isDone: boolean = false;
+
+  // Number: Represents both integer and floating-point numbers.
+  let decimal: number = 6;
+  let hex: number = 0xf00d;
+  
+  // String: Represents a sequence of characters.
+  let fullName: string = `John Doe`;
+
+  // Array: Represents a collection of elements of the same type.
+  let numbers: number[] = [1, 2, 3];
+  let names: Array<string> = ["John", "Doe"];
+
+  // Tuple: Represents an array with a fixed number of elements, where each element may be of a different type.
+  let tuple: [string, number] = ["hello", 10];
+
+  // Enum: A way of giving more friendly names to sets of numeric values.
+  enum Color { Red, Green, Blue }
+  let c: Color = Color.Green;
+
+  // Any: Represents a value of any type. Use it when the type of a value is unknown.
+  let notSure: any = 4;
+
+});
 
 test('test var, let and const', async () => {
   function varExample() {

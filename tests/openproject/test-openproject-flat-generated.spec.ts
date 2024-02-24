@@ -1,19 +1,20 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator } from '@playwright/test';
 
 test.describe.configure({ mode: 'parallel' });
 
 test.describe('Test Open Project - Auto generated', () => {
-  test('Test add new task', async ({ page }) => {
+  test('should create new task', async ({ page }) => {
     const randomTaskName = Math.random().toString(36).substring(7);
     await page.goto('http://localhost:8080/');
     
     await page.getByRole('link', { name: 'Sign in ' }).click();
-    await page.getByLabel('Username').fill('admin');
-    await page.getByLabel('Username').press('Tab');
+    let userNameTb: Locator = page.getByLabel('Username')
+    await userNameTb.fill('admin');    
     await page.getByLabel('Password').fill('adminadmin');
     await page.getByRole('button', { name: 'Sign in' }).click();
-    await page.getByRole('link', { name: 'Select a project ' }).click();
-    
+    await page.getByRole('link', { name: 'Select a project ' }).click();
+    await page.locator('#ui-id-2').getByRole('link', { name: 'Demo project' }).click();
+  
     await page.locator('#main-menu-work-packages').click();
     await page.locator('wp-create-button').getByLabel('Create new work package').click();
     await page.getByLabel('Task', { exact: true }).click();
